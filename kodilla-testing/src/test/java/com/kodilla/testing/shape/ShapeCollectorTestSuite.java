@@ -49,6 +49,10 @@ public class ShapeCollectorTestSuite {
         Square square = new Square(20);
         Triangle triangle = new Triangle(15,20);
 
+        figures.addFigure(circle);
+        figures.addFigure(square);
+        figures.addFigure(triangle);
+
         //When
         figures.removeFigure(triangle);
         //Then
