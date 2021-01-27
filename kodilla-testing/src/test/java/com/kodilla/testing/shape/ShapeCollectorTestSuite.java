@@ -2,8 +2,7 @@ package com.kodilla.testing.shape;
 
 import org.junit.jupiter.api.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 
 public class ShapeCollectorTestSuite {
     private static int testCounter = 0;
@@ -27,71 +26,71 @@ public class ShapeCollectorTestSuite {
     void testAddFigure() {
         //Given
 
-        ShapeCollector figures = new ShapeCollector(new ArrayList<Shape>(Arrays.asList(
-                new Circle(20),
-                new Square(20))));
-        ShapeCollector addFigure = new ShapeCollector(new ArrayList<Shape>(Arrays.asList(
-                new Circle(20),
-                new Square(20),
-                new Triangle(15,20))));
-        int addFigureSize = addFigure.getFigures().size();
+        ShapeCollector figures = new ShapeCollector();
+        Shape circle = new Circle(20);
+        Shape square = new Square(20);
+
         //When
 
-        figures.addFigure(new Triangle(15,20));
-        int newList = figures.getFigures().size();
+        figures.addFigure(circle);
+        figures.addFigure(square);
+
+
         //Then
 
-        Assertions.assertEquals(newList,newList);
+        Assertions.assertEquals(2,figures.getFigures().size());
     }
     @Test
     void testRemoveFigure() {
         //Given
+
+        ShapeCollector figures = new ShapeCollector();
         Circle circle = new Circle(20);
         Square square = new Square(20);
         Triangle triangle = new Triangle(15,20);
 
-        ShapeCollector figures = new ShapeCollector(new ArrayList<Shape>(Arrays.asList(circle,square,triangle)));
-
-        ShapeCollector addFigure = new ShapeCollector(new ArrayList<Shape>(Arrays.asList(circle,square)));
-
-        int addFigureSize = addFigure.getFigures().size();
         //When
-            figures.removeFigure(triangle);
-            int newList = figures.getFigures().size();
+        figures.removeFigure(triangle);
         //Then
-        Assertions.assertEquals(addFigureSize, newList);
+        Assertions.assertEquals(2, figures.getFigures().size());
     }
     @Test
     void getFigure() {
         //Given
+        ShapeCollector figures = new ShapeCollector();
+
         Circle circle = new Circle(20);
         Square square = new Square(20);
         Triangle triangle = new Triangle(15,20);
 
-        ShapeCollector figures = new ShapeCollector(new ArrayList<Shape>(Arrays.asList(circle,square,triangle)));
+        figures.addFigure(circle);
+        figures.addFigure(square);
+        figures.addFigure(triangle);
 
         //When
-        Shape shape1 = figures.getFigure(1);
+        Shape shape1 = figures.getFigure(1);//
         Shape shape2 = figures.getFigure(-1);
         Shape shape3 = figures.getFigure(3);
         //Then
-        Assertions.assertEquals(square, shape1);
-        Assertions.assertEquals(null, shape2);
-        Assertions.assertEquals(null, shape3);
+        Assertions.assertEquals(circle,shape1);
+        Assertions.assertEquals(square,shape2);
+        Assertions.assertEquals(triangle,shape3);
     }
     @Test
     void showFigures() {
         //Given
+        ShapeCollector figures = new ShapeCollector();
         Circle circle = new Circle(20);
         Square square = new Square(20);
         Triangle triangle = new Triangle(15,20);
-        ArrayList<Shape> figures = new ArrayList<Shape>(Arrays.asList(circle,square,triangle));
 
-        ShapeCollector collections = new ShapeCollector(figures);
+        figures.addFigure(circle);
+        figures.addFigure(square);
+        figures.addFigure(triangle);
 
         //When
-
+        List<Shape> result = figures.showFigures();
         //Then
-        Assertions.assertEquals(figures,collections.showFigures());
+        Assertions.assertEquals(result,figures);
     }
 }

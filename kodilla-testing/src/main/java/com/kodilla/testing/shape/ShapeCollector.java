@@ -7,14 +7,6 @@ public class ShapeCollector {
 
     private List<Shape> figures = new ArrayList<Shape>();
 
-    public ShapeCollector(List<Shape> figures) {
-        this.figures = figures;
-    }
-
-    public ShapeCollector() {
-
-    }
-
     public void addFigure(Shape shape) {
         figures.add(shape);
     }
@@ -34,6 +26,7 @@ public class ShapeCollector {
         for(Shape show: figures){
         System.out.println(figures);
         }
+
         return figures;
     }
 
