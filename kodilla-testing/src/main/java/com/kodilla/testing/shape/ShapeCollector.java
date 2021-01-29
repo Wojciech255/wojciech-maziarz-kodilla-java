@@ -15,7 +15,7 @@ public class ShapeCollector {
         }
 
     public Shape getFigure(int n) {
-        if(n > 0 && n < figures.size()){
+        if(n >= 0 && n < figures.size()){
             return figures.get(n);
         } else{
             return null;
@@ -24,7 +24,7 @@ public class ShapeCollector {
 
     public List<Shape> showFigures(){
         for(Shape show: figures){
-        System.out.println(figures);
+        System.out.println(show);
         }
 
         return figures;

@@ -72,9 +72,9 @@ public class ShapeCollectorTestSuite {
         figures.addFigure(triangle);
 
         //When
-        Shape shape1 = figures.getFigure(1);//
-        Shape shape2 = figures.getFigure(-1);
-        Shape shape3 = figures.getFigure(3);
+        Shape shape1 = figures.getFigure(0);//
+        Shape shape2 = figures.getFigure(1);
+        Shape shape3 = figures.getFigure(2);
         //Then
         Assertions.assertEquals(circle,shape1);
         Assertions.assertEquals(square,shape2);
@@ -94,6 +94,8 @@ public class ShapeCollectorTestSuite {
 
         //When
         List<Shape> result = figures.showFigures();
+
+
         //Then
         Assertions.assertEquals(result,figures);
     }
