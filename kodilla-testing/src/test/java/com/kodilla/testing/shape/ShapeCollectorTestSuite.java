@@ -91,12 +91,15 @@ public class ShapeCollectorTestSuite {
         figures.addFigure(circle);
         figures.addFigure(square);
         figures.addFigure(triangle);
-
-        //When
         List<Shape> result = figures.showFigures();
 
+        //When
+        List<Shape> result1 = figures.showFigures();
+        figures.addFigure(circle);
+        figures.addFigure(square);
+        figures.addFigure(triangle);
 
         //Then
-        Assertions.assertEquals(result,figures);
+        Assertions.assertEquals(result1,result);
     }
 }
