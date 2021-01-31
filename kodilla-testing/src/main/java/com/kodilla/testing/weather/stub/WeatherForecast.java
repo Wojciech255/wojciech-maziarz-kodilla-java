@@ -43,9 +43,6 @@ public class WeatherForecast {
             list.add(temperature.getValue());
         }
         Collections.sort(list);
-        double median = 0;
-        if (list.size() % 2 == 0)
-            median = list.size();
-        return list.size();
+        return list.get(2);
     }
 }
