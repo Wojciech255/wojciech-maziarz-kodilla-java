@@ -116,8 +116,6 @@ public class BookDirectoryTestSuite {
 
         //When
         List<Book> theList = bookLibrary.listBooksInHandsOf(libraryUser);
-        //theList.add(new Book("asas","zxczxc",1222));
-
 
         //Then
         assertEquals(1, theList.size());
