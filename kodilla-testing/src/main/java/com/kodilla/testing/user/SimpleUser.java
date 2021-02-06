@@ -3,8 +3,8 @@ package com.kodilla.testing.user;
 
 public class SimpleUser {
 
-     String userName;
-     String realName;
+     private String userName;
+     private String realName;
 
     public SimpleUser (String userName){
         this.userName = userName;
