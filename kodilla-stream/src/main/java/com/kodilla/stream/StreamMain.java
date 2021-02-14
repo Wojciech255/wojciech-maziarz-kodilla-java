@@ -99,5 +99,10 @@ public class StreamMain {
         theResultMapOfBooks.entrySet().stream()
                 .forEach(System.out::println);
 
+        // 7.4
+        // World world = new World();
+        // world.getContinentList().stream()
+        //        .flatMap(continent -> continent.getCountryList().stream())
+        //        .forEach(System.out::println);
     }
 }
