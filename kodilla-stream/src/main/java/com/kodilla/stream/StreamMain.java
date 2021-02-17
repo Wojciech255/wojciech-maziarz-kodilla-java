@@ -104,5 +104,6 @@ public class StreamMain {
         // world.getContinentList().stream()
         //        .flatMap(continent -> continent.getCountryList().stream())
         //        .forEach(System.out::println);
+        /////
     }
 }
