@@ -125,4 +125,12 @@ class BoardTestSuite {
         assertEquals(1, tasks.size());                              // [9]
         assertEquals("HQLs for analysis", tasks.get(0).getTitle());
     }
+    @Test
+    void testAddTaskListAverageWorkingOnTask(){
+        //Given
+        Board project = prepareTestData();
+
+        // When
+
+    }
 }

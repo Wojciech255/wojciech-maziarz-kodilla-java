@@ -17,14 +17,16 @@ public class ForumUser {
         this.realName = realName;
     }
 
-    public void addPost(String author, String postBody){
+    public void addPost(String author, String postBody) {
         ForumPost thePost = new ForumPost(postBody, author);
         posts.add(thePost);
     }
-    public void addComment(ForumPost thePost, String author, String commentBody){
+
+    public void addComment(ForumPost thePost, String author, String commentBody) {
         ForumComment theComment = new ForumComment(thePost, commentBody, author);
         comments.add(theComment);
     }
+
     public int getPostsQuantity() {
         return posts.size();
     }
@@ -32,6 +34,7 @@ public class ForumUser {
     public int getCommentsQuantity() {
         return comments.size();
     }
+
     public ForumPost getPost(int postNumber) {
         if (postNumber >= 0 && postNumber < posts.size()) {
             return posts.get(postNumber);
