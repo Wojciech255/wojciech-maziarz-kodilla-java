@@ -112,25 +112,36 @@ class BoardTestSuite {
         Board project = prepareTestData();
 
         //When
-        List<TaskList> undoneTasks = new ArrayList<>();             // [1]
-        undoneTasks.add(new TaskList("To do"));                     // [2]
-        undoneTasks.add(new TaskList("In progress"));               // [3]
-        List<Task> tasks = project.getTaskLists().stream()          // [4]
-                .filter(undoneTasks::contains)                           // [5]
-                .flatMap(tl -> tl.getTasks().stream())                   // [6]
-                .filter(t -> t.getDeadline().isBefore(LocalDate.now()))  // [7]
-                .collect(toList());                                      // [8]
+        List<TaskList> undoneTasks = new ArrayList<>();
+        undoneTasks.add(new TaskList("To do"));
+        undoneTasks.add(new TaskList("In progress"));
+        List<Task> tasks = project.getTaskLists().stream()
+                .filter(undoneTasks::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .filter(t -> t.getDeadline().isBefore(LocalDate.now()))
+                .collect(toList());
 
         //Then
-        assertEquals(1, tasks.size());                              // [9]
+        assertEquals(1, tasks.size());
         assertEquals("HQLs for analysis", tasks.get(0).getTitle());
     }
+
     @Test
-    void testAddTaskListAverageWorkingOnTask(){
+    void testAddTaskListAverageWorkingOnTask() {
         //Given
         Board project = prepareTestData();
 
-        // When
+        //When
+        List<TaskList> inProgressList = new ArrayList<>();
+        inProgressList.add(new TaskList("In progress"));
+        double average = project.getTaskLists().stream()
+                .filter(inProgressList::contains)
+                .flatMap(taskList -> taskList.getTasks().stream())
+                .map(Task::getCreated)
+                .mapToDouble(date->LocalDate.now().getDayOfYear() - date.getDayOfYear())
+                .average().orElse(0.0);
 
+        //Then
+        assertEquals(10.0,average);
     }
 }
