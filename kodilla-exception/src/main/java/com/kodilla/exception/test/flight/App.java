@@ -1,6 +1,5 @@
 package com.kodilla.exception.test.flight;
 
-
 public class App {
 
     public static void main(String[] args) {
