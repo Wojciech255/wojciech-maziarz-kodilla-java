@@ -3,6 +3,7 @@ package com.kodilla.stream.portfolio;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,11 +95,11 @@ class BoardTestSuite {
         Board project = prepareTestData();
 
         //When
-        User user = new User("developer1", "John Smith");     // [1]
-        List<Task> tasks = project.getTaskLists().stream()    // [2]
-                .flatMap(l -> l.getTasks().stream())               // [3]
-                .filter(t -> t.getAssignedUser().equals(user))     // [4]
-                .collect(toList());                                // [5]
+        User user = new User("developer1", "John Smith");
+        List<Task> tasks = project.getTaskLists().stream()
+                .flatMap(l -> l.getTasks().stream())
+                .filter(t -> t.getAssignedUser().equals(user))
+                .collect(toList());
 
         //Then
         assertEquals(2, tasks.size());
@@ -138,10 +139,11 @@ class BoardTestSuite {
                 .filter(inProgressList::contains)
                 .flatMap(taskList -> taskList.getTasks().stream())
                 .map(Task::getCreated)
-                .mapToDouble(date->LocalDate.now().getDayOfYear() - date.getDayOfYear())
+                //.mapToDouble(date ->ChronoUnit.DAYS.between(LocalDate.now().getDayOfYear() , date.getDayOfYear()))
+                .mapToDouble(date -> LocalDate.now().getDayOfYear() - date.getDayOfYear())
                 .average().orElse(0.0);
 
         //Then
-        assertEquals(10.0,average);
+        assertEquals(10.0, average);
     }
 }

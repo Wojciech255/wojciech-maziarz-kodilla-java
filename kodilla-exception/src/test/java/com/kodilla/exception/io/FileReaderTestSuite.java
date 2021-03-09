@@ -1,6 +1,7 @@
 package com.kodilla.exception.io;
 
 import com.kodilla.exception.test.SecondChallenge;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,36 +10,43 @@ class FileReaderTestSuite {
 
     @Test
     void testReadFile() {
-        // given
+        // Given
         FileReader fileReader = new FileReader();
-        // when & then
+        // When & Then
         assertDoesNotThrow(() -> fileReader.readFile());
     }
 
     @Test
     void whenFileDosentExistsReadFileShouldThrowException() {
-        // given
+        // Given
         FileReader fileReader = new FileReader();
         String fileName = "nie_ma_takiego_pliku.txt";
-        // when & then
+        // When & Then
         assertThrows(FileReaderException.class, () -> fileReader.readFile(fileName));
     }
 
     @Test
     public void testReadFileWithName() {
-        // given
+        // Given
         FileReader fileReader = new FileReader();
-        // when & then
+        // When & Then
         assertAll(
                 () -> assertThrows(FileReaderException.class, () -> fileReader.readFile("nie_ma_takiego_pliku.txt")),
                 () -> assertThrows(FileReaderException.class, () -> fileReader.readFile(null)),
                 () -> assertDoesNotThrow(() -> fileReader.readFile("names.txt"))
         );
     }
-    /*@Test
+
+    @Test
     public void probablyIWillThrowException() {
-        //given
-        //SecondChallenge secondChallenge = new SecondChallenge();
-      }
-   */
+        //Given
+        SecondChallenge secondChallenge = new SecondChallenge();
+
+        //When
+        String result = secondChallenge.probablyIWillThrowException(2, 2);
+        // Then
+        Assertions.assertEquals(result, "Done!");
+    }
+
+
 }
