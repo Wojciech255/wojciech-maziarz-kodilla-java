@@ -85,8 +85,6 @@ class BoardTestSuite {
         project.addTaskList(taskListInProgress);
         project.addTaskList(taskListDone);
         return project;
-
-
     }
 
     @Test
