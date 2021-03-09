@@ -139,8 +139,7 @@ class BoardTestSuite {
                 .filter(inProgressList::contains)
                 .flatMap(taskList -> taskList.getTasks().stream())
                 .map(Task::getCreated)
-                //.mapToDouble(date ->ChronoUnit.DAYS.between(LocalDate.now().getDayOfYear() , date.getDayOfYear()))
-                .mapToDouble(date -> LocalDate.now().getDayOfYear() - date.getDayOfYear())
+                .mapToDouble(date -> ChronoUnit.DAYS.between(date, LocalDate.now()))
                 .average().orElse(0.0);
 
         //Then

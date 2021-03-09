@@ -1,20 +1,16 @@
 package com.kodilla.good.patterns.challenges;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class MovieStore {
     public static void main(String[] args) {
-
         MovieStore movieStore = new MovieStore();
-        movieStore.getMovies().entrySet().stream()
+        String result = movieStore.getMovies().entrySet().stream()
                 .flatMap(movie -> movie.getValue().stream())
-                .map(n -> n + "!")
-                .forEach(System.out::print);
+                .collect(Collectors.joining("!"));
+        System.out.println(result);
     }
-
 
     public Map<String, List<String>> getMovies() {
         List<String> ironManTranslations = new ArrayList<>();
@@ -36,5 +32,4 @@ public class MovieStore {
 
         return booksTitlesWithTranslations;
     }
-
 }
