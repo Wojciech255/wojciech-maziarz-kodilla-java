@@ -19,6 +19,7 @@ public class WeatherForecast {
         }
         return resultMap;
     }
+
     public double calculateAverage() {
 
         for (Map.Entry<String, Double> temperature : temperatures.getTemperatures().entrySet()) {

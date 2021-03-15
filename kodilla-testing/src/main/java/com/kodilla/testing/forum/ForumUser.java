@@ -12,6 +12,7 @@ public class ForumUser {
     private List<ForumPost> posts = new ArrayList<>();
     private List<ForumComment> comments = new LinkedList<>();
 
+
     public ForumUser(String name, String realName) {
         this.name = name;
         this.realName = realName;

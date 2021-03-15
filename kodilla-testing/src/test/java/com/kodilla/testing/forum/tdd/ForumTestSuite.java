@@ -25,6 +25,7 @@ class ForumTestSuite {
         testCounter++;
         System.out.println("Preparing to execute test #" + testCounter);
     }
+
     @Nested
     @DisplayName("Tests for posts")
     class TestPost {
@@ -41,35 +42,37 @@ class ForumTestSuite {
             Assertions.assertEquals(1, forumUser.getPostsQuantity());
         }
     }
-        @Test
-        void testAddComment() {
-            //Given
-            ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
-            ForumPost thePost = new ForumPost("Hello everyone, " +
-                    "this is my first contribution here!", "mrsmith");
 
-            //When
-            forumUser.addComment(thePost, "mrsmith", "Thank you for all good words!");
+    @Test
+    void testAddComment() {
+        //Given
+        ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
+        ForumPost thePost = new ForumPost("Hello everyone, " +
+                "this is my first contribution here!", "mrsmith");
 
-            //Then
-            Assertions.assertEquals(1, forumUser.getCommentsQuantity());
-        }
+        //When
+        forumUser.addComment(thePost, "mrsmith", "Thank you for all good words!");
 
-        @Test
-        void testGetPost() {
-            //Given
-            ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
-            ForumPost thePost = new ForumPost("Hello everyone, " +
-                    "this is my first contribution here!", "mrsmith");
-            forumUser.addPost(thePost.getAuthor(), thePost.getPostBody());
+        //Then
+        Assertions.assertEquals(1, forumUser.getCommentsQuantity());
+    }
 
-            //When
-            ForumPost retrievedPost;
-            retrievedPost = forumUser.getPost(0);
+    @Test
+    void testGetPost() {
+        //Given
+        ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
+        ForumPost thePost = new ForumPost("Hello everyone, " +
+                "this is my first contribution here!", "mrsmith");
+        forumUser.addPost(thePost.getAuthor(), thePost.getPostBody());
 
-            //Then
-            Assertions.assertEquals(thePost, retrievedPost);
-        }
+        //When
+        ForumPost retrievedPost;
+        retrievedPost = forumUser.getPost(0);
+
+        //Then
+        Assertions.assertEquals(thePost, retrievedPost);
+    }
+
     @Test
     void testGetComment() {
         //Given
@@ -87,6 +90,7 @@ class ForumTestSuite {
         //Then
         Assertions.assertEquals(theComment, retrievedComment);
     }
+
     @Test
     void testRemovePostNotExisting() {
         //Given
@@ -100,6 +104,7 @@ class ForumTestSuite {
         //Then
         Assertions.assertFalse(result);
     }
+
     @Test
     void testRemoveCommentNotExisting() {
         //Given
@@ -115,6 +120,7 @@ class ForumTestSuite {
         //Then
         Assertions.assertFalse(result);
     }
+
     @Test
     void testRemovePost() {
         //Given
@@ -130,6 +136,7 @@ class ForumTestSuite {
         Assertions.assertTrue(result);
         Assertions.assertEquals(0, forumUser.getPostsQuantity());
     }
+
     @Test
     void testRemoveComment() {
         //Given
