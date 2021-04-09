@@ -3,7 +3,7 @@ package singleton;
 public enum Logger {
 
     INSTANCE1;
-    private String lastLog = "czesc";
+    private String lastLog = "Hi";
 
     public void log(String log) {
         lastLog = log;

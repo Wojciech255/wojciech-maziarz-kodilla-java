@@ -1,8 +1,8 @@
 package singleton;
 
-public enum  SettingsFileEngine {
+public enum SettingsFileEngine {
 
-        INSTANCE;
+    INSTANCE;
 
     private String fileName = "";
 

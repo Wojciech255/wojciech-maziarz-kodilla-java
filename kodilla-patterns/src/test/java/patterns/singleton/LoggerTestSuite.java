@@ -15,6 +15,6 @@ public class LoggerTestSuite {
         logger = Logger.INSTANCE1;
         String lastLog1 = logger.getLastLog();
         //Then
-        assertEquals("czesc", lastLog1);
+        assertEquals("Hi", lastLog1);
     }
 }
