@@ -6,7 +6,7 @@ public final class PaintingTask implements Task {
     private final String color;
     private final String whatToPaint;
 
-    public PaintingTask(final String taskName,final String color,final String whatToPaint) {
+    public PaintingTask(final String taskName, final String color, final String whatToPaint) {
         this.taskName = taskName;
         this.color = color;
         this.whatToPaint = whatToPaint;
@@ -14,7 +14,7 @@ public final class PaintingTask implements Task {
 
     @Override
     public String executeTask() {
-        return taskName;
+        return executeTask();
     }
 
     @Override

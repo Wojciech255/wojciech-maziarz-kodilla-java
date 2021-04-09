@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TaskFactoryTestSuite {
 
     @Test
-    void TaskFactoryTestSuite(){
+    void TaskFactoryTestSuite() {
         //Given
         TaskFactory taskFactory = new TaskFactory();
 
@@ -18,8 +18,8 @@ public class TaskFactoryTestSuite {
         Task painting = taskFactory.makeTask(TaskFactory.PAINTING);
         Task driving = taskFactory.makeTask(TaskFactory.DRIVING);
         //Then
-        assertEquals(shopping.getTaskName(),"Shopping");
-        assertEquals(painting.getTaskName(),"Painting");
-        assertEquals(driving.getTaskName(),"Driving");
+        assertEquals(shopping.getTaskName(), "Shopping");
+        assertEquals(painting.getTaskName(), "Painting");
+        assertEquals(driving.getTaskName(), "Driving");
     }
 }

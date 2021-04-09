@@ -14,7 +14,7 @@ public final class ShoppingTask implements Task {
 
     @Override
     public String executeTask() {
-        return taskName;
+        return executeTask();
     }
 
     @Override
