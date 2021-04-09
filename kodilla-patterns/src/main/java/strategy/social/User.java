@@ -1,7 +1,7 @@
 package strategy.social;
 
 public class User {
-    private String name;
+    private final String name;
     protected SocialPublisher socialPublisher;
 
     public User(String name) {
@@ -11,7 +11,8 @@ public class User {
     public String getName() {
         return name;
     }
-    public String sharePost(){
+
+    public String sharePost() {
         return socialPublisher.share();
     }
 
