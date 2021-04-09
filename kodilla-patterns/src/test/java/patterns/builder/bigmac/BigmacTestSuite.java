@@ -11,16 +11,18 @@ public class BigmacTestSuite {
     void testBigmacNew(){
         //Given
         Bigmac bigmac = new Bigmac.BigmacBuilder()
-                .bun("Biala")
+                .bun("Bun")
                 .burgers(3)
                 .sauce("Barbecue")
                 .ingredient("ser")
-                .ingredient("salata")
+                .ingredient("tomato")
+                .ingredient("cucumber")
+                .ingredient("onion")
                 .build();
         System.out.println(bigmac);
         //When
         int howManyIngredients = bigmac.getIngredients().size();
         //Then
-        assertEquals(2, howManyIngredients);
+        assertEquals(4, howManyIngredients);
     }
 }
