@@ -1,4 +1,5 @@
 package prototype.library;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,8 +32,19 @@ public final class Library extends Prototype<Library> {
         Library clonedLibrary = super.clone();
         clonedLibrary.books = new HashSet<>();
         for (Book theBook : books) {
-            Book clonedBook = new Book(theBook.getTitle(),theBook.getAuthor(),theBook.getPublicationDate());
+            Book clonedBook = new Book(theBook.getTitle(), theBook.getAuthor(), theBook.getPublicationDate());
+            /*for (Library library : theBook.getAuthor()){
+             */
         }
+
         return clonedLibrary;
+    }
+
+    @Override
+    public String toString() {
+        return "Library{" +
+                "name='" + name + '\'' +
+                ", books=" + books +
+                '}';
     }
 }

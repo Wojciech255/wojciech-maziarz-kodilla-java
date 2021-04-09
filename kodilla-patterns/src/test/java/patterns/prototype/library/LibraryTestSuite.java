@@ -14,10 +14,10 @@ public class LibraryTestSuite {
     void testGetBooks() {
         //when
         Library library = new Library("Project 1");
-        library.getBooks().add(new Book("tittttleee", "autoooor", LocalDate.of(2002, 02, 02)));
-        library.getBooks().add(new Book("tittttleee2", "autoooor2", LocalDate.of(2002, 02, 02)));
-        library.getBooks().add(new Book("tittttleee3", "autoooor3", LocalDate.of(2003, 02, 02)));
-        library.getBooks().add(new Book("tittttleee4", "autoooor4", LocalDate.of(2004, 02, 02)));
+        library.getBooks().add(new Book("50 Shades of Grey", "E. L. James ", LocalDate.of(2011, 02, 02)));
+        library.getBooks().add(new Book("The Last of the Mohicans", "James Fenimore Cooper", LocalDate.of(1826, 02, 02)));
+        library.getBooks().add(new Book("The Jungle Book", "Rudyard Kipling", LocalDate.of(1894, 02, 02)));
+        library.getBooks().add(new Book("Neverending Story", "Michael Ende", LocalDate.of(1979, 02, 02)));
 
         Library clonedBoard = null;
         try {
@@ -30,12 +30,13 @@ public class LibraryTestSuite {
         Library deepClonedBoard = null;
         try {
             deepClonedBoard = library.deepCopy();
-            deepClonedBoard.setName("Project number 3");
+            deepClonedBoard.setName("Project 3");
         } catch (CloneNotSupportedException e) {
             System.out.println(e);
         }
         System.out.println(library);
         System.out.println(clonedBoard);
+        System.out.println(deepClonedBoard);
         //When
         //Then
         assertEquals(4, library.getBooks().size());
