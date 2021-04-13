@@ -5,9 +5,9 @@ import java.util.List;
 
 public final class TaskList {
 
-    final List<String> tasks;
+   private final List<String> tasks = new ArrayList<>();
 
-    public TaskList() {
-        tasks = new ArrayList<>();
+    public List<String> getTasks() {
+        return tasks;
     }
 }

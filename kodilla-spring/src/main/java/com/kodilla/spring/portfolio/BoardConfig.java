@@ -1,16 +1,26 @@
 package com.kodilla.spring.portfolio;
 
-import com.kodilla.spring.reader.ReaderConfig;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
-
-import java.util.List;
 
 @Configuration
 public class BoardConfig {
 
+
+    @Bean
+    public Board board(TaskList toDoList,TaskList inProgresList,TaskList doneList) {
+        return new Board(toDoList,inProgresList,doneList);
+    }
+    @Bean
+    public TaskList toDoList(){
+        return new TaskList();
+    }
+    @Bean
+    public TaskList inProgresList(){
+        return new TaskList();
+    }
+    @Bean
+    public TaskList doneList(){
+        return new TaskList();
+    }
 }
