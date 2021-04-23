@@ -1,4 +1,4 @@
-/*package com.kodilla.hibernate.tasklist.dao;
+package com.kodilla.hibernate.tasklist.dao;
 
 import com.kodilla.hibernate.tasklist.TaskList;
 import org.junit.jupiter.api.Assertions;
@@ -33,4 +33,3 @@ public class TaskListDaoTestSuite {
         taskListDao.delete(taskList);
     }
 }
-*/
