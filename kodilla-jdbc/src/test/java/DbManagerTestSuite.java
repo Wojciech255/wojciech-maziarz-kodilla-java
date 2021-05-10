@@ -17,6 +17,7 @@ class DbManagerTestSuite {
         //Then
         assertNotNull(dbManager.getConnection());
     }
+
     @Test
     void testSelectUsers() throws SQLException {
         //Given
@@ -39,8 +40,30 @@ class DbManagerTestSuite {
         statement.close();
         assertEquals(5, counter);
     }
-    @Test
-    void testSelectUsersAndPosts(){
 
+    @Test
+    void testSelectUsersAndPosts() throws SQLException {
+        //Given
+        DbManager dbManager = DbManager.getInstance();
+
+        //When
+        String sqlQuery = "select u.firstname, u.lastname\n" +
+                "  from users u, posts p\n" +
+                " where u.id = p.user_id \n" +
+                " group by u.id\n" +
+                "having count(*)>=2 ";
+        Statement statement = dbManager.getConnection().createStatement();
+        ResultSet rs = statement.executeQuery(sqlQuery);
+
+        //Then
+        int counter = 0;
+        while (rs.next()) {
+            System.out.println(rs.getString("FIRSTNAME") + ", " +
+                    rs.getString("LASTNAME"));
+            counter++;
+        }
+        rs.close();
+        statement.close();
+        assertEquals(3, counter);
     }
 }
