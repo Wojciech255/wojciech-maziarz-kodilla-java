@@ -7,7 +7,7 @@ import java.util.List;
 
 @NamedQuery(
         name = "Employee.findByName",
-        query = "FROM Employee WHERE substring(lastname) = :LAST_NAME"
+        query = "FROM Employee WHERE substring(lastname,1,3) = :LAST_NAME"
 )
 @Entity
 @Table(name = "EMPLOYEES")

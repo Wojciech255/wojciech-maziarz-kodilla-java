@@ -14,7 +14,7 @@ public class Item {
     private BigDecimal price;
     private int quantity;
     private BigDecimal value;
-
+    private Invoice invoice;
     public Item() {
     }
 
@@ -23,12 +23,22 @@ public class Item {
         this.quantity = quantity;
         this.value = value;
     }
+
     @Id
     @GeneratedValue
     @NotNull
     @Column(name = "ID", unique = true)
     public int getId() {
         return id;
+    }
+@ManyToOne
+@JoinColumn(name="INVOICE_ID")
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
     }
 
     @ManyToOne

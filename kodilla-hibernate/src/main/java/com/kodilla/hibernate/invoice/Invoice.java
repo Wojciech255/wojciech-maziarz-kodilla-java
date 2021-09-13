@@ -16,6 +16,12 @@ public class Invoice {
 
     public Invoice() {
     }
+
+    public Invoice( String number, List<Item> items) {
+        this.number = number;
+        this.items = items;
+    }
+
     @Id
     @NotNull
     @GeneratedValue
@@ -29,8 +35,7 @@ public class Invoice {
     public String getNumber() {
         return number;
     }
-    @OneToMany
-    @JoinColumn(name = "PRODUCT_ID")
+    @OneToMany(targetEntity = Item.class,mappedBy = "invoice")
     public List<Item> getItems() {
         return items;
     }

@@ -6,15 +6,18 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+@Transactional
 @SpringBootTest
 class CompanyDaoTestSuite {
 
     @Autowired
     private CompanyDao companyDao;
+    @Autowired
     private EmployeeDao employeeDao;
 
     @Test
@@ -92,7 +95,7 @@ class CompanyDaoTestSuite {
         //CleanUp
     }
 
- /*   @Test
+    @Test
     void testFindByName() {
         //Given
         Employee johnSmith = new Employee("John", "Smith");
@@ -117,17 +120,11 @@ class CompanyDaoTestSuite {
 
         employeeDao.save(johnSmith);
         int johnSmithId = johnSmith.getId();
-       // companyDao.save(dataMaesters);
-       // int dataMaestersId = dataMaesters.getId();
-       // companyDao.save(greyMatter);
-       // int greyMatterId = greyMatter.getId();
         //When
 
-        List<Employee> result = employeeDao.findByName("Smith");
+        List<Employee> result = employeeDao.findByName("Smi");
         //Then
         assertEquals(1, result.size());
         //CleanUp
     }
-
-  */
 }
