@@ -1,22 +1,38 @@
 package com.kodilla.patterns2.adapter.bookclasifier;
 
-import com.kodilla.patterns2.adapter.bookclasifier.librarya.Book;
-import com.kodilla.patterns2.adapter.bookclasifier.librarya.Classifier;
+import com.kodilla.patterns2.adapter.bookclasifier.libraryb.BookSignature;
+import com.kodilla.patterns2.adapter.bookclasifier.libraryb.BookStatistics;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
-public class MedianAdapter extends MedianAdaptee implements Classifier {
+public class MedianAdapter extends MedianAdaptee implements BookStatistics {
+
+
     @Override
-    public int publicationYearMedian(Set<Book> bookSet) {
-        List<Book> bookList = new ArrayList<>();
-        for (int n = 0; n < bookSet.size(); n++) {
-            bookList.add(new Book("a","a",1222,"12e"));
-            bookList.add(new Book("b","b",123,"123a"));
+    public int averagePublicationYear(Map<BookSignature,com.kodilla.patterns2.adapter.bookclasifier.libraryb.Book> books) {
+        Set<com.kodilla.patterns2.adapter.bookclasifier.librarya.Book> bookSet = new HashSet<>();
+        for (Map.Entry<BookSignature,com.kodilla.patterns2.adapter.bookclasifier.libraryb.Book> entry: books.entrySet()){
+            bookSet.add(new com.kodilla.patterns2.adapter.bookclasifier.librarya.Book(
+                    entry.getValue().getAuthor(),
+                    entry.getValue().getTitle(),
+                    entry.getValue().getYearOfPublication(),
+                    entry.getKey().getSignature()));
         }
-       // return publicationYearMedian(bookList) ;
-        //
-        return 1;
+        return publicationYearAverage(bookSet);
+    }
+
+    @Override
+    public int medianPublicationYear(Map<BookSignature,com.kodilla.patterns2.adapter.bookclasifier.libraryb.Book> books) {
+        Set<com.kodilla.patterns2.adapter.bookclasifier.librarya.Book> bookSet = new HashSet<>();
+        for (Map.Entry<BookSignature,com.kodilla.patterns2.adapter.bookclasifier.libraryb.Book> entry: books.entrySet()){
+            bookSet.add(new com.kodilla.patterns2.adapter.bookclasifier.librarya.Book(
+                    entry.getValue().getAuthor(),
+                    entry.getValue().getTitle(),
+                    entry.getValue().getYearOfPublication(),
+                    entry.getKey().getSignature()));
+        }
+        return publicationYearMedian(bookSet);
     }
 }

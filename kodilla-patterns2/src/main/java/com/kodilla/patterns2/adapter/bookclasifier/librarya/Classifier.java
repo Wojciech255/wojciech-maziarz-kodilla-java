@@ -4,4 +4,5 @@ import java.util.Set;
 
 public interface Classifier {
     int publicationYearMedian(Set<Book> bookSet);
+    int publicationYearAverage(Set<Book> bookSet);
 }
