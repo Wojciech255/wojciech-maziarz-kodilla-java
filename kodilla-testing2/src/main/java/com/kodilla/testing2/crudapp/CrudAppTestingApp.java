@@ -1,5 +1,6 @@
 package com.kodilla.testing2.crudapp;
 
+
 import com.kodilla.testing2.config.WebDriverConfig;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +15,7 @@ public class CrudAppTestingApp{
 
     public static void main(String[] args) {
         WebDriver driver = WebDriverConfig.getDriver(WebDriverConfig.CHROME);
-        driver.get("https://interceptor2048.github.io/");
+        driver.get("https://wojciech255.github.io/");
 
         WebElement searchField = driver.findElement(By.xpath(XPATH_INPUT));
         searchField.sendKeys("New robotic task");
